@@ -1,0 +1,85 @@
+TODO
+====
+
+Demo 1: (day 5 of class)
+----
+* design and build database. Use placeholder images from a site like unsplash.it for any images (temporarily)
+
+Demo 2: (day 6)
+----
+* set up the HTML structure for the base template (header, footer, sidebar)
+* make todo.txt and write the objectives of the day
+* connect to the DB
+* Display all public posts on the index page
+* Display lists of users, categories, and tags in sidebar (challenge the students to do this on their own)
+* do some basic styling
+
+Demo 3: (day 7)
+----
+* Open todo.txt and write the objectives of the day
+* JOINS - beef up all existing queries
+* COUNT/Aggregate functions - count posts in tags/category lists. make * helper functions to count comments for any posts
+
+Demo 4: (day 8)
+----
+* Open todo.txt and write the objectives of the day
+* create single post template ( single.php )
+* add comment form to INSERT new comments: (use $user_id = 1 temporarily until we do authentication on a later day)
+* list all comments on single.php
+* make sanitizing helper functions
+
+Demo 5: (day 9)
+----
+* Open todo.txt and write the objectives of the day
+* Add search form to sidebar
+* add template for Search results (search.php)
+* paginate those results with LIMIT and math
+
+Demo 6: (day 10)
+----
+* Open todo.txt and write the objectives of the day
+* AJAX category filter page
+* AJAX Like button (if there's time!)
+
+Demo 7: 
+----
+* Open todo.txt and write the objectives of the day
+* SASS day - beef up the styling!
+
+Demo 8: (day 12)
+----
+* Open todo.txt and write the objectives of the day
+* Make an RSS feed of the latest published images
+* link to it in the <head>
+
+Demo 9: (day 13)
+----
+* Open todo.txt and write the objectives of the day
+* clean-up details
+* challenge - add the category page, tag page
+
+Demo 10: (day 15)
+----
+* Open todo.txt and write the objectives of the day
+* build and parse register form to add a new user
+* build and parse login form (use salts + hashes to harden cookies/sessions)
+* create a helper function to check if a user is logged in
+* make the nav menu adapt to  logged in/not logged in users
+
+Demo 11: (day 16)
+----
+* Open todo.txt and write the objectives of the day
+* Image uploads!
+* Build add-post form in 2 steps:
+	* step 1 upload image (INSERT POST)
+	* step 2 add post details (UPDATE POST)
+* create image_url function that can show any image url at any size
+
+Demo 12: (Day ??)
+----
+* open todo.txt and write objectives of the day
+* Build profile.php template
+* advanced SELECT with LEFT JOIN to get the user + post info even if the user has no posts
+* build a fancy loop that handles the first result differently than the rest 
+
+

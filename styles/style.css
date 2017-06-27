@@ -1,0 +1,278 @@
+
+html{
+	box-sizing:border-box;
+	background-color:white;
+}
+html *{
+	box-sizing: inherit;
+}
+body{
+	font-family: "Libre Franklin", "Arial", sans-serif;
+	margin: 0;
+	line-height: 1.5;
+	overflow-x: hidden; 
+}
+.header{
+	background-color: #333 ; 
+	position: relative;  
+}
+.header h1{
+	font-size:2rem;
+	text-align: center;
+	z-index:999;
+	margin:0;
+	padding:0;
+}
+header h1 a{
+	text-decoration: none;
+	color:teal;
+}
+
+.content{
+	padding:1em;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+article{
+	flex-grow: 1;
+	max-width:400px;
+	margin:0 auto 4em;
+	max-width:25%;
+}
+.full-column{
+	width:100%;
+	max-width:none;
+	text-align:center;
+}
+.content img{
+	max-width: 100%;
+	height: auto;
+}
+.sidebar{
+	padding:1em;
+	background-color:#eee;
+	clear:both;
+}
+.footer{
+	clear:both;
+	background-color: #ddd;
+	padding: 1em;
+	text-align: center;
+}
+
+/*
+==navigation
+ */
+nav{
+	background:#ccc;
+
+}
+ul, li{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+ul.menu li{
+	display: inline-block;
+}
+ul.menu a{
+	padding:1rem .5rem;
+	color:inherit;
+	text-decoration: none;
+	display: block;
+	font-weight: bold;
+}
+/*
+==posts
+ */
+.thumbnail-post{
+	text-align:center;
+}
+.user-card img, .profile-pic img{
+	border-radius: 500px;
+	vertical-align: middle;
+}
+.user-card a{
+	text-decoration: none;
+	color:inherit;
+}
+span.tags{
+	display: block;
+	color:#aaa;
+	font-style: italic;
+}
+
+
+.commentform{
+	max-width:500px;
+}
+.comments-list{
+	max-width:600px;
+	margin:auto;
+	font-size:.9em;
+	border-top:solid 1px #ddd;
+	border-bottom:solid 1px #ddd;
+	padding:1rem 0
+}
+.comment-form{
+	max-width:600px;
+	margin:auto;
+}
+/*
+==Forms
+*/
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	white-space: nowrap;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar. */
+}
+
+label{
+	display:block;
+	margin:1em 0 .2em;
+}
+input, textarea, select{
+	width:100%;
+	
+	padding:.25em;
+	font-size:120%;
+}
+[type=submit]{
+	background: #C33764;  
+	color:white;
+	border:none;
+	width:auto;
+	display:block;
+	margin:1em 0;
+	padding:.25em 1em;
+	font-family: inherit;
+	transition: background .3s ease-out;
+}
+input[type=submit]:hover,
+input[type=submit]:focus{
+	background-color: #1D2671;
+}
+textarea{
+	min-height:6em;
+	resize: vertical;
+}
+.feedback{
+	background-color: wheat;
+	padding:1rem;
+}
+/*
+==search bar
+*/
+
+.search-bar form{
+	display: flex;
+	padding:1em 0;
+	text-align:center;
+	max-width: 400px;
+	margin:auto;
+
+}
+.search-bar input[type=search]{
+	width:80%;
+}
+
+.search-bar input, 
+.search-bar button{
+	display: inline-block;
+	flex-grow:1;
+	margin:0;
+	border:none;
+	padding:.2rem;
+	line-height: 1.4;
+	
+
+}
+
+/*
+==pagination
+*/
+.pagination{
+	clear: both;
+	margin:1em 0;
+	text-align: center;
+}
+.pagination a{
+	display: inline-block;
+	background-color: #eee;
+	border-radius: .2em;
+	padding:.25em .8em;
+	text-decoration: none;
+	color:black;
+}
+/* ajax loader */
+#display-area{
+	position: relative;
+}
+.loading:after {
+	content: '';
+	position: absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	background-color: rgba(0,0,0,.2);
+	background-image: url(../images/spin.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+@media screen and (min-width: 350px ){
+	.thumbnail-post{
+		width:31%;
+	}
+}
+@media screen and (min-width:800px){
+	.wrapper{
+		display: -ms-flex;
+		display: -webkit-flex;
+		display: flex;
+	}
+	.content, .search-bar{
+		width:60%;
+	}
+	.thumbnail-post{
+		width:20%;
+
+	}
+	.sidebar, .menu{
+		width:40%;
+		clear: none;
+	}
+}
+
+
+
+
