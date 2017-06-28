@@ -1,8 +1,8 @@
 <?php 
 error_reporting( E_ALL & ~E_NOTICE ); 
 //connect to the db
-require('db-config.php');
-include_once( 'functions.php' );
+require('includes/db-config.php');
+include_once( 'includes/functions.php' );
 //Added DAY 14 (user auth day) check to see if we're logged in or not
 session_start();
 $logged_in_user = check_login();
@@ -21,7 +21,7 @@ $logged_in_user = check_login();
 <body>
 
 	<header class="header">
-		<h1 class="logo"><a href="index.php"><img src="images/logo.svg" width="198" height="57"></a></h1>
+		<a class="logo" href="index.php"><img src="images/logo.svg" width="198" height="57"></a>
 	</header>
 
 	<nav class="main-navigation wrapper">

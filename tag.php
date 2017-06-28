@@ -6,13 +6,13 @@ TEACHER NOTES:
 * Assign this as a "challenge" if there's time. 	
 * Requires a more complex join on the "between" table in the main query
  */ 
-require('header.php'); 
+require('includes/header.php'); 
 
 //which tag are we trying to show
 $tag_id = $_GET['tag_id'];
 ?>
 
-<main class="content">
+<main class="content grid">
 	<?php 
 	//get all the posts in this tag. make sure they are published posts
 	$query = "SELECT *
@@ -63,5 +63,5 @@ $tag_id = $_GET['tag_id'];
 
 </main>
 
-<?php include('sidebar.php'); ?>
-<?php include('footer.php'); ?>
+<?php include('includes/sidebar.php'); ?>
+<?php include('includes/footer.php'); ?>

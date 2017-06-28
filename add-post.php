@@ -6,16 +6,16 @@ Use this to demonstrate image uploads.
 Don't forget enctype attribute on this form
 Store the URL to the image in the DB
 */ 
-require('header.php');
-include('add-post-parse.php'); ?>
+require('includes/header.php');
+include('includes/add-post-parse.php'); ?>
 
 <main class="content">
-	<h2 class="full-column">Add a Post</h2>
+	<h2 >Add a Post</h2>
 
 	<?php show_feedback( $feedback, $errors ); ?>
 
 	<!-- don't forget enctype attribute! -->
-	<form class="full-column" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+	<form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
 			<label for="the_image">Image</label>
 			<input type="file" name="uploadedfile" id="the_image" required>
 			
@@ -26,5 +26,5 @@ include('add-post-parse.php'); ?>
 	
 </main>
 
-<?php require('sidebar.php'); ?>
-<?php require('footer.php'); ?>
+<?php require('includes/sidebar.php'); ?>
+<?php require('includes/footer.php'); ?>

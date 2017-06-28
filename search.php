@@ -3,7 +3,7 @@
 template to show keyword search results
 Anyone can see this page
 */
-require('header.php');
+require('includes/header.php');
 
 //Search configuration
 $per_page = 4;
@@ -45,7 +45,7 @@ if( $phrase != '' ){
 } //end search parser
 ?>
 
-<main class="content">
+<main class="content grid">
 	
 	<?php 
 	//if there are rows in the results, show them
@@ -134,5 +134,5 @@ if( $phrase != '' ){
 	?>
 </main>
 
-<?php include('sidebar.php'); ?>
-<?php include('footer.php'); ?>
+<?php include('includes/sidebar.php'); ?>
+<?php include('includes/footer.php'); ?>

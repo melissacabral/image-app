@@ -1,4 +1,6 @@
-
+/*
+== Whole Page
+*/
 html{
 	box-sizing:border-box;
 	background-color:white;
@@ -12,35 +14,54 @@ body{
 	line-height: 1.5;
 	overflow-x: hidden; 
 }
+/*
+== Site header
+ */
 .header{
-	background-color: #333 ; 
+	background-color: #333; 
 	position: relative;  
+	text-align: center;
 }
 .header h1{
 	font-size:2rem;
-	text-align: center;
 	z-index:999;
 	margin:0;
-	padding:0;
+	padding:1rem;
 }
-header h1 a{
+.header a{
 	text-decoration: none;
-	color:teal;
+	color:white;
+	display: block;
+	padding:1px;
+}
+.logo{
+	
+}
+.logo img{
+	max-width:180px;
+	height: auto;
+	margin:.5rem;
 }
 
+
+/*
+== Main content
+ */
 .content{
-	padding:1em;
+	padding:1em;	
+}
+.grid{
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: flex-start;
 }
-
-article{
-	flex-grow: 1;
+article{	
 	max-width:400px;
 	margin:0 auto 4em;
-	max-width:25%;
+}
+.grid article{
+	/*flex-grow: 1;*/
 }
 .full-column{
 	width:100%;
@@ -51,6 +72,9 @@ article{
 	max-width: 100%;
 	height: auto;
 }
+/*
+== Page Sidebar and Footer
+ */
 .sidebar{
 	padding:1em;
 	background-color:#eee;
@@ -65,20 +89,22 @@ article{
 
 /*
 ==navigation
- */
+*/
 nav{
 	background:#ccc;
-
 }
 ul, li{
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
 }
-ul.menu li{
+.menu{
+	text-align: center;
+}
+.menu li{
 	display: inline-block;
 }
-ul.menu a{
+.menu a{
 	padding:1rem .5rem;
 	color:inherit;
 	text-decoration: none;
@@ -87,9 +113,17 @@ ul.menu a{
 }
 /*
 ==posts
- */
+*/
 .thumbnail-post{
-	text-align:center;
+	text-align: center;	
+	flex-grow: 1;
+	width:150px;
+	margin: 1%;
+}
+.medium-post{
+	width:200px;
+	/*flex-grow: 1;*/
+	margin: 1%;
 }
 .user-card img, .profile-pic img{
 	border-radius: 500px;
@@ -165,6 +199,10 @@ input, textarea, select{
 	padding:.25em;
 	font-size:120%;
 }
+[type=checkbox]{
+	width:auto;
+
+}
 [type=submit]{
 	background: #C33764;  
 	color:white;
@@ -194,7 +232,7 @@ textarea{
 
 .search-bar form{
 	display: flex;
-	padding:1em 0;
+	padding:1em;
 	text-align:center;
 	max-width: 400px;
 	margin:auto;
@@ -232,28 +270,6 @@ textarea{
 	text-decoration: none;
 	color:black;
 }
-/* ajax loader */
-#display-area{
-	position: relative;
-}
-.loading:after {
-	content: '';
-	position: absolute;
-	left:0;
-	right:0;
-	top:0;
-	bottom:0;
-	background-color: rgba(0,0,0,.2);
-	background-image: url(../images/spin.gif);
-	background-repeat: no-repeat;
-	background-position: center center;
-}
-
-@media screen and (min-width: 350px ){
-	.thumbnail-post{
-		width:31%;
-	}
-}
 @media screen and (min-width:800px){
 	.wrapper{
 		display: -ms-flex;
@@ -262,14 +278,11 @@ textarea{
 	}
 	.content, .search-bar{
 		width:60%;
-	}
-	.thumbnail-post{
-		width:20%;
-
-	}
+	}	
 	.sidebar, .menu{
 		width:40%;
 		clear: none;
+		text-align: left;
 	}
 }
 

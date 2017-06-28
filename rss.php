@@ -1,6 +1,6 @@
 <?php //connect to DB
-require('db-config.php');
-include_once('functions.php');
+require('includes/db-config.php');
+include_once('includes/functions.php');
 
 //for compatibility because of the <?  symbols
 echo '<?xml version="1.0"?>';

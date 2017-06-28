@@ -10,8 +10,8 @@ TEACHER NOTES:
 	* phase 3: display a list of the comments on this post
 	* phase 4: after edit-post demo, add the edit button if this is your post	
  */ 
-require('header.php'); 
-include('comment-parse.php');
+require('includes/header.php'); 
+include('includes/comment-parse.php');
 
 //which post are we trying to show
 $post_id = $_GET['post_id'];
@@ -37,7 +37,7 @@ $post_id = $_GET['post_id'];
 		while( $row = $result->fetch_assoc() ){
 			?>
 
-			<article class="post full-column">
+			<article class="post">
 				<img src="<?php image_url($post_id, 'large') ?>" class="post-image">
 
 
@@ -76,7 +76,7 @@ $post_id = $_GET['post_id'];
 				$result_comments = $db->query($query_comments);
 				if( $result_comments->num_rows >= 1 ){
 					?>
-					<section class="comments-list full-column">
+					<section class="comments-list">
 						<h2>Comments:</h2>
 
 						<ul>
@@ -97,7 +97,7 @@ $post_id = $_GET['post_id'];
 		</ul>
 	</section>
 	<?php } //end if comments ?>
-	<section class="comment-form full-column">
+	<section class="comment-form">
 		<?php 
 	//add this after user authentication demo
 		if ($logged_in_user['user_id']){ ?>	
@@ -130,5 +130,5 @@ $post_id = $_GET['post_id'];
 
 </main>
 
-<?php include('sidebar.php'); ?>
-<?php include('footer.php'); ?>
+<?php include('includes/sidebar.php'); ?>
+<?php include('includes/footer.php'); ?>

@@ -11,13 +11,13 @@ This file demonstrates a slightly more advanced loop handling with a LEFT Join p
 * subsequent iterations show smaller images
 
 */
-require('header.php'); 
+require('includes/header.php'); 
 
 //whose profile?
 $user_id = $_GET['user_id'];
 ?>
 
-<main class="content">
+<main class="content grid">
 	<?php 
 	//get this user's public posts. 
 	//we use a LEFT JOIN so that the query will still return one row (the user's data) if this user has no posts yet
@@ -99,6 +99,6 @@ $user_id = $_GET['user_id'];
 
 </main>
 
-<?php include('sidebar.php'); ?>
+<?php include('includes/sidebar.php'); ?>
 
-<?php include('footer.php'); ?>
+<?php include('includes/footer.php'); ?>

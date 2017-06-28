@@ -4,10 +4,10 @@ The main 'feed' of all users' most recent published images.
 Anyone can view this page. 
 */
 
-include('header.php'); 
+include('includes/header.php'); 
 ?>
 
-<main class="content">
+<main class="content grid">
 	<?php 
 	//get the most recent posts for the main feed page
 	$query = 	"SELECT posts.*, users.username, users.user_id, users.profile_pic, categories.*
@@ -50,10 +50,10 @@ include('header.php');
 			<?php echo $row['name']; ?>
 			<br>
 			<?php show_post_tags( $row['post_id'] ); ?>
+			
 			<?php count_comments( $row['post_id'], ' comment on this post', 
 			' comments on this post' ); ?>
 		</div>
-
 		
 	</article>
 	<?php 
@@ -63,9 +63,8 @@ include('header.php');
 	}else{
 		echo 'No Posts found.';
 	} ?>
-
 </main>
 
-<?php include('sidebar.php'); ?>
+<?php include('includes/sidebar.php'); ?>
 
-<?php include('footer.php'); ?>
+<?php include('includes/footer.php'); ?>

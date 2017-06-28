@@ -3,8 +3,8 @@
 Edit any post as long as ?post_id=X is in the query string
 This is also step 2 of adding a new post - edit the details, like title, body, etc
 */
-require('header.php');
-include('edit-post-parse.php');
+require('includes/header.php');
+include('includes/edit-post-parse.php');
 
 
 //which post are we editing?
@@ -22,11 +22,10 @@ if(!$result){
 	echo $db->error;
 }
 $row = $result->fetch_assoc();
-
 ?>
 
 <main class="content">
-	<h2 class="full-column">Image Details</h2>
+	<h2>Image Details</h2>
 	<img src="<?php image_url($post_id, 'large'); ?>" class="post-image">
 	
 
@@ -62,6 +61,6 @@ $row = $result->fetch_assoc();
 </main>
 <?php $result->free(); ?>
 
-<?php require('sidebar.php'); ?>
+<?php require('includes/sidebar.php'); ?>
 
-<?php require('footer.php'); ?>
+<?php require('includes/footer.php'); ?>

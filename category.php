@@ -5,14 +5,14 @@ The template for displaying all posts in any category. Anyone can see this page
 TEACHER NOTES:
 * Assign this as a "challenge" if there's time. 	
  */ 
-require('header.php'); 
+require('includes/header.php'); 
 
 
 //which category are we trying to show
 $category_id = $_GET['cat_id'];
 ?>
 
-<main class="content">
+<main class="content grid">
 	<?php 
 	//get all the posts in  THIS category. make sure they're published posts
 	$query = "SELECT posts.*, users.username, users.user_id, users.profile_pic, categories.*
@@ -63,5 +63,5 @@ $category_id = $_GET['cat_id'];
 
 </main>
 
-<?php include('sidebar.php'); ?>
-<?php include('footer.php'); ?>
+<?php include('includes/sidebar.php'); ?>
+<?php include('includes/footer.php'); ?>

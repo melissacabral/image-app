@@ -1,24 +1,24 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,700|Source+Sans+Pro');
-
 html{
 	box-sizing: border-box;
-	background: #DE6262;  /* fallback for old browsers */
-	background: -webkit-linear-gradient(to right, #FFB88C, #DE6262);  /* Chrome 10-25, Safari 5.1-6 */
-	background: linear-gradient(to right, #FFB88C, #DE6262); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #DAE2F8;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom right, #D6A4A4, #DAE2F8);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom right, #D6A4A4, #DAE2F8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+height:100%;
 }
 html *{
 	box-sizing: inherit;
 }
 body{
-	background-color: #FFFAEC;
+	background-color: #E2E0EF;
 	margin:2em auto;
-	width:80%;
+	width:90%;
 	max-width:400px;
 	box-shadow:.5rem 1rem 30px rgba(0,0,0,.2);
-	font-family: Raleway, Arial, sans-serif;
+	font-family: "Libre Franklin", "Arial", sans-serif;
 }
 h1{
-	padding:1rem 1rem 0;
+	
 	color:#90588F;
 }
 .feedback{
@@ -39,10 +39,14 @@ form{
 }
 label{
 	display: block;
-	margin:1em 0 .2em;
+	margin:1.5rem 0 .2rem;
 }
-input[type=text],
-input[type=password]{
+.hint{
+	color:gray;
+	font-style: italic;
+	font-size: .9em;
+}
+input{
 	display: block;
 	width:100%;
 	font-size:120%;
@@ -52,18 +56,24 @@ input[type=password]{
 	outline: none;
 
 }
+input[type=checkbox]{
+	width:auto;
+	display: inline;
+	border:none;
+}
 
 input[type=submit]{
-	background-color: orange;
+	background: #C33764;  
 	color:white;
 	border-radius: 300px;
 	padding:.5em 1em;
 	border:none;
-	box-shadow:0 .25em #F0BFCC;
+	box-shadow:0 .25em #8E2144;
 	text-shadow:0 1px 0 rgba(0,0,0,.2);
 	display: block;
 	margin:1em 0;
 	font-family: inherit;
 	font-size: 110%;
 	cursor: pointer;
+	width:auto;
 }

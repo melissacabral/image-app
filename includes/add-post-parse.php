@@ -14,8 +14,8 @@ if($_POST['did_add_post']){
 	//list of image sizes to generate. 
 	$sizes = array(
 		'thumb' => 150,
-		'medium' => 300,
-		'large' => 600
+		'medium' => 200,
+		'large' => 400
 		);	
 
 	// This is the temporary file created by PHP

@@ -26,8 +26,8 @@ function count_comments( $post_id, $one = ' comment' , $many = ' comments' ){
 	global $db;
 	//query
 	$query = "SELECT COUNT(*) AS total
-				FROM comments
-				WHERE post_id = $post_id";
+	FROM comments
+	WHERE post_id = $post_id";
 	//run it
 	$result = $db->query($query);
 	//check it
@@ -141,24 +141,24 @@ function category_dropdown( $current = 0 ){
 		echo $db->error;
 	} 
 	if( $result->num_rows >= 1 ){
-	?>
-	<select name="category_id" id="the_cat">
-		<?php while( $row = $result->fetch_assoc() ){ ?>
-		<option value="<?php echo $row['category_id']; ?>" <?php 
-			if( $current == $row['category_id'] ){ 
-				echo 'selected'; 
-			} ?>>
-			<?php echo $row['name']; ?>
-		</option>
-		<?php 
+		?>
+		<select name="category_id" id="the_cat">
+			<?php while( $row = $result->fetch_assoc() ){ ?>
+			<option value="<?php echo $row['category_id']; ?>" <?php 
+				if( $current == $row['category_id'] ){ 
+					echo 'selected'; 
+				} ?>>
+				<?php echo $row['name']; ?>
+			</option>
+			<?php 
 		} //end while
 		$result->free();
 		?>
 	</select>
 	<?php
-	}else{
-		echo 'No Categories to Show';
-	}
+}else{
+	echo 'No Categories to Show';
+}
 }
 
 /*
@@ -168,16 +168,16 @@ TODO: maybe delete
 function show_profile_pic( $user_id, $size = 'thumb' ){
 	global $db;
 	$query = "SELECT profile_pic FROM users
-			WHERE user_id = $user_id
-			LIMIT 1";
+	WHERE user_id = $user_id
+	LIMIT 1";
 	$result = $db->query($query);
 	if( $result->num_rows == 1 ){
 		$row = $result->fetch_assoc();
 
-	
+		
 			//show the image
-			echo '<img src="http://localhost/melissa-php-0517/image-app/uploads/' . $row['profile_pic'] . '_' . $size . '.jpg" alt="Profile Picture" class="profile_pic">';
-	
+		echo '<img src="http://localhost/melissa-php-0517/image-app/uploads/' . $row['profile_pic'] . '_' . $size . '.jpg" alt="Profile Picture" class="profile_pic">';
+		
 	}
 }
 /*
@@ -186,63 +186,77 @@ Added day 14
 returns: array containing all user info if logged in
 		false if not logged in
  */
-function check_login( $redirect = '' ){
-	global $db;
-	if( isset($_SESSION['user_id']) AND isset($_SESSION['secret_key']) ){
+		function check_login( $redirect = '' ){
+			global $db;
+			if( isset($_SESSION['user_id']) AND isset($_SESSION['secret_key']) ){
 		//check for a match in the DB
-		$sess_user_id = $_SESSION['user_id'];
-		$sess_secret_key = $_SESSION['secret_key'];
+				$sess_user_id = $_SESSION['user_id'];
+				$sess_secret_key = $_SESSION['secret_key'];
 
-		$query = "SELECT * FROM users
+				$query = "SELECT * FROM users
 				WHERE user_id = $sess_user_id
 				AND secret_key = '$sess_secret_key'
 				LIMIT 1";
-		$result = $db->query($query);
+				$result = $db->query($query);
 
-		if( !$result ){
+				if( !$result ){
 			//query failed. user is not logged in.
-			if($redirect != ''){
-				header("Location:$redirect");
-			}
-			return false;
+					if($redirect != ''){
+						header("Location:$redirect");
+					}
+					return false;
 
-		}
+				}
 
-		if($result->num_rows == 1){
+				if($result->num_rows == 1){
 			//success - we have a logged in user! return all the info aout this user in an array
-			return $result->fetch_assoc();
-		}else{
+					return $result->fetch_assoc();
+				}else{
 			//credentials don't match. user is not logged in
-			if($redirect != ''){
-				header("Location:$redirect");
-			}
-			return false;
-		}
+					if($redirect != ''){
+						header("Location:$redirect");
+					}
+					return false;
+				}
 
-	}else{
+			}else{
 		//no session data. the user is not logged in
-		if($redirect != ''){
-			header("Location:$redirect");
+				if($redirect != ''){
+					header("Location:$redirect");
+				}
+				return false;
+			}	
 		}
-		return false;
-	}	
-}
 
-function image_url($post_id = 0, $size = 'medium'){
-	global $db;
+		function image_url($post_id = 0, $size = 'medium'){
+			global $db;
 		//get  the image
-	$query = "SELECT image FROM posts WHERE post_id = $post_id LIMIT 1";
-	$result = $db->query($query);
+			$query = "SELECT image FROM posts WHERE post_id = $post_id LIMIT 1";
+			$result = $db->query($query);
 
-	if(! $result){
-		die($db->error);
-	}
+			if(! $result){
+				die($db->error);
+			}
 
-	$row = $result->fetch_assoc();
+			$row = $result->fetch_assoc();
 
-	if($row['image']){
-		echo 'uploads/' . $row['image'] . '_' . $size . '.jpg';
-	}
+			if($row['image']){
+				echo 'uploads/' . $row['image'] . '_' . $size . '.jpg';
+			}
+		}
+
+/*
+Count the number of likes on any post
+ */
+function count_post_likes($post_id){
+	global $db;
+
+	$query = "SELECT COUNT(*) AS likes 
+			FROM likes
+			WHERE post_id = $post_id";
+	$result_likes = $db->query($query);
+	$row_likes = $result_likes->fetch_assoc();
+	echo $row_likes['likes'];
 }
 
 //no close php

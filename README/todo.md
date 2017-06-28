@@ -3,18 +3,19 @@ TODO
 * figure out why white screen of death on uploading a .png
 * after login: recreate the session if cookie is valid
 
-* styling - flexbox issues on form. maybe addd a "no flex" class to the container
-
-* AJAX demo plan!
+* SCSS
 
 * better dummy data
 
 * check with notices showing
-* Make wireframes n flowchart
-* edit/add hashtags
+* Make wireframes 
+* edit/add hashtags (no.)
 
 DONE
 ====
+* flowchart
+* AJAX demo plan! 
+* styling - flexbox issues on form. maybe addd a "no flex" class to the container
 * image_url function
 * menu that changes options if logged in
 * search
