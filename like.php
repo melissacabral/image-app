@@ -49,12 +49,14 @@ require('includes/header.php');
 					<img src="<?php image_url($row['post_id'], 'large'); ?>" class="post-image">
 				</a>
 
+				<?php if($logged_in_user){ ?>
 				<div class="likes">
 					<button data-postid="<?php echo $row['post_id'] ?>">LIKE</button>
 					<span class="like-counter">			
 						<?php count_post_likes($row['post_id']) ?>
 					</span>
 				</div>
+				<?php } ?>
 
 				<h3><?php echo $row['title']; ?></h3>
 
