@@ -1,10 +1,10 @@
-TODO
+Daily Demos
 ====
 
 Demo 1: (day 5 of class)
 ----
 * design and build database. Use placeholder images from a site like unsplash.it for any images (temporarily)
-* Screenflow:https://docs.google.com/drawings/d/1p-p9L5PX6fIEWNB1Bgs64geRnrbWN-iCFhT5AZ3wrSY/pub?w=960&h=720
+* Screenflow, Wireframes and ERD are here: https://app.moqups.com/melissacabral/oc1n7wC0fD/view
 
 Demo 2: (day 6)
 ----

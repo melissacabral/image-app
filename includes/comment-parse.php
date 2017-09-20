@@ -30,7 +30,7 @@ if( $_POST['did_comment'] ){
 	
 	//if valid, add to DB
 	if( $valid ){
-		//TODO: once the admin panel is set up, change the "is_approved" value
+		//TODO: manually storing "is_approved" value as 1 (true). Maybe change in the future when comment moderation features are more fleshed out
 		$query = "INSERT INTO comments
 				(user_id, date, body, post_id, is_approved)
 				VALUES

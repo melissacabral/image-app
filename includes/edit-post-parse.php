@@ -1,4 +1,31 @@
 <?php 
+//which post are we trying to edit?
+$post_id = $_GET['post_id'];
+
+//check for invalid post_id in Query string:
+if(! $post_id){
+	die('invalid post id. go back to step 1');
+}else{	
+	//get the current data about this post - we'll UPDATE it when they submit this form. this also allows us to make the form "sticky"
+	$user_id = $logged_in_user['user_id'];
+	$query = "SELECT * FROM posts WHERE post_id = $post_id AND user_id = $user_id LIMIT 1";
+	$result = $db->query($query);
+	if(!$result){
+		echo $db->error;
+	}
+	if($result->num_rows == 0){
+		die('Not your image');
+	}
+	$row = $result->fetch_assoc();
+
+	//for the sticky fields
+	$title = $row['title'];
+	$body = $row['body'];
+	$category_id = $row['category_id'];
+	$allow_comments = $row['allow_comments'];
+}
+
+//PARSE if they submitted new info
 if($_POST['did_edit']){
 
 	//clean all fields

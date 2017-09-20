@@ -163,7 +163,6 @@ function category_dropdown( $current = 0 ){
 
 /*
 Display Any user's picture at any size (thumb, med or large)
-TODO: maybe delete
 */
 function show_profile_pic( $user_id, $size = 'thumb' ){
 	global $db;
@@ -173,10 +172,9 @@ function show_profile_pic( $user_id, $size = 'thumb' ){
 	$result = $db->query($query);
 	if( $result->num_rows == 1 ){
 		$row = $result->fetch_assoc();
-
 		
-			//show the image
-		echo '<img src="http://localhost/melissa-php-0517/image-app/uploads/' . $row['profile_pic'] . '_' . $size . '.jpg" alt="Profile Picture" class="profile_pic">';
+		//show the image
+		echo '<img src="uploads/' . $row['profile_pic'] . '_' . $size . '.jpg" alt="Profile Picture" class="profile_pic">';
 		
 	}
 }

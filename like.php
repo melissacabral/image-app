@@ -52,7 +52,8 @@ require('includes/header.php');
 				<?php if($logged_in_user){ ?>
 				<div class="likes">
 					<button data-postid="<?php echo $row['post_id'] ?>">LIKE</button>
-					<span class="like-counter">			
+					<span class="like-counter">	
+
 						<?php count_post_likes($row['post_id']) ?>
 					</span>
 				</div>
