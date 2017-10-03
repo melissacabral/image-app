@@ -1,8 +1,12 @@
 <?php 
-/*
-stand-alone login form.
-It does not load the normal site header, 
-so we need to manually include all dependencies here:
+/**
+* Teacher Notes
+* Day 14 or 15 demo
+* Start from the login form and parser we made on day 3 and add DB check, security key
+* Make sure there is a "secret_key" field in users table
+* stand-alone login form.
+* It does not load the normal site header, 
+* so we need to manually include all dependencies here:
  */
 //supress Notice: messages
 error_reporting( E_ALL & ~E_NOTICE ); 

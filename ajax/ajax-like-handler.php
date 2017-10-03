@@ -7,6 +7,7 @@
  * This file never leaves the server. its display output (echo) is passed back to the browser via ajax 
  */
 require('../includes/db-config.php');
+require('../includes/functions.php');
 
 //data coming from jquery .ajax() call
 $post_id = $_REQUEST['post_id'];
@@ -45,12 +46,9 @@ if($like){
 if($db->affected_rows == 1){
 	//calculate the new  number of likes
 	
-	$query = "SELECT COUNT(*) AS likes 
-	FROM likes
-	WHERE post_id = $post_id";
-	$result_likes = $db->query($query);
-	$row_likes = $result_likes->fetch_assoc();
-	echo $row_likes['likes'] . ' likes';
+	 
+	//do count_post_likes($post_id) first, then advanced if desired
+	advanced_count_post_likes($post_id, $user_id) ;
 	
 }else{
 	echo 'Sorry, the rating did not work';

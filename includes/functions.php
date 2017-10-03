@@ -245,6 +245,7 @@ returns: array containing all user info if logged in
 
 /*
 Count the number of likes on any post
+See advanced example below, as well
  */
 function count_post_likes($post_id){
 	global $db;
@@ -252,9 +253,37 @@ function count_post_likes($post_id){
 	$query = "SELECT COUNT(*) AS likes 
 			FROM likes
 			WHERE post_id = $post_id";
-	$result_likes = $db->query($query);
-	$row_likes = $result_likes->fetch_assoc();
-	echo $row_likes['likes'];
+
+	$result = $db->query($query);
+
+	if(!$result) echo $db->error; 
+	
+	$row = $result->fetch_assoc();
+	$total =  $row['likes'];
+	echo $total == 1 ? $total . ' like' : $total . ' likes'; 
+
+}
+/* this advanced version can tell if a user likes the post, AND tell the total count in one query */
+function advanced_count_post_likes($post_id, $user_id){
+	global $db;
+	$query = "SELECT(
+			      SELECT COUNT(*)
+				  FROM   likes WHERE post_id = $post_id
+				  ) AS likes,
+				  (SELECT COUNT(*)
+				  FROM   likes WHERE user_id = $user_id AND post_id = $post_id
+				  ) AS you_like";
+
+	$result = $db->query($query);
+
+	if(!$result) echo $db->error; 
+
+	$row = $result->fetch_assoc();
+	$total =  $row['likes'];
+	$class = $row['you_like'] ? 'you_like' : 'not_liked';
+
+	$words =  $total == 1 ? $total . ' like' : $total . ' likes';
+	echo "<div class='$class'>$words</div>"; 
 }
 
 //no close php

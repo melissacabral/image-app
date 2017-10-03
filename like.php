@@ -9,6 +9,12 @@
 
 * This example is built as a standalone file for demonstration purposes - in reality, this functionality would be incorporated into every page of the site that shows posts
 
+* Add the "likes table" first, put some dummy data in it
+* +----------+---------+---------+
+* | like_id* | user_id | post_id |
+* +----------+---------+---------+
+* 
+
 * Start from Index.php. Add the "like button" (line 51-ish) and the scripts at the bottom of the page. 
  */
 require('includes/header.php');
@@ -48,17 +54,19 @@ require('includes/header.php');
 				<a href="single.php?post_id=<?php echo $row['post_id']; ?>">
 					<img src="<?php image_url($row['post_id'], 'large'); ?>" class="post-image">
 				</a>
-
-				<?php if($logged_in_user){ ?>
 				<div class="likes">
+				<?php if($logged_in_user){ ?>
+				
 					<button data-postid="<?php echo $row['post_id'] ?>">LIKE</button>
+					
+				
+				<?php } ?>
 					<span class="like-counter">	
-
-						<?php count_post_likes($row['post_id']) ?>
+						<?php 
+						//do count_post_likes($post_id) first, then advanced if desired
+						advanced_count_post_likes($row['post_id'], $logged_in_user['user_id']) ?>
 					</span>
 				</div>
-				<?php } ?>
-
 				<h3><?php echo $row['title']; ?></h3>
 
 
@@ -98,7 +106,7 @@ require('includes/header.php');
 	var user_id = <?php echo $logged_in_user['user_id'] ?>;
 
 	//get the parent container so we can update the count in the display 
-	var display =  $(this).next("span");     
+	var display =  $(this).next(".like-counter");     
 	//create an ajax request to display.php
 	$.ajax({   
 		type: "GET",

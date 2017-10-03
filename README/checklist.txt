@@ -62,10 +62,11 @@ Demo 9: (day 13)
 Demo 10: (day 15)
 ----
 * Open todo.txt and write the objectives of the day
+* Add secret_key to DB.users
 * build and parse register form to add a new user
 * build and parse login form (use salts + hashes to harden cookies/sessions)
 * create a helper function to check if a user is logged in
-* make the nav menu adapt to  logged in/not logged in users
+* make the nav menu adapt to logged in/not logged in users
 
 Demo 11: (day 16)
 ----
