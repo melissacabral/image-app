@@ -306,4 +306,15 @@ textarea{
 	background-color:#eee;
 }
 
+/* LIKES additions */
+.heart{
+	color:gray;
+	font-size:1.4em;
+	cursor:pointer;
+}
+.you_like .heart{
+	color:red;
+}
+
+
 

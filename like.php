@@ -54,19 +54,14 @@ require('includes/header.php');
 				<a href="single.php?post_id=<?php echo $row['post_id']; ?>">
 					<img src="<?php image_url($row['post_id'], 'large'); ?>" class="post-image">
 				</a>
-				<div class="likes">
-				<?php if($logged_in_user){ ?>
 				
-					<button data-postid="<?php echo $row['post_id'] ?>">LIKE</button>
-					
-				
-				<?php } ?>
-					<span class="like-counter">	
+			
+					<div class="likes">
 						<?php 
-						//do count_post_likes($post_id) first, then advanced if desired
-						advanced_count_post_likes($row['post_id'], $logged_in_user['user_id']) ?>
-					</span>
-				</div>
+						//do count_post_likes($post_id) first, then advanced likes() if desired
+						likes($row['post_id'], $logged_in_user['user_id']) ?>
+					
+					</div>
 				<h3><?php echo $row['title']; ?></h3>
 
 
@@ -99,14 +94,17 @@ require('includes/header.php');
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(".likes button").click(function() {
+	//bind with "on" because .click won't work since the like button is added to the DOM by the ajax response
+	$(".likes").on( "click", ".button", function() {
 
 	//what thing did they like or dislike?
 	var post_id = $(this).data("postid"); 
 	var user_id = <?php echo $logged_in_user['user_id'] ?>;
 
-	//get the parent container so we can update the count in the display 
-	var display =  $(this).next(".like-counter");     
+	console.log(post_id, user_id);
+
+	//get the parent ".likes" container of the button that was pushed
+	var display =  $(this).parents('.likes');     
 	//create an ajax request to display.php
 	$.ajax({   
 		type: "GET",

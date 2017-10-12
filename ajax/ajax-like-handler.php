@@ -15,9 +15,9 @@ $user_id = $_REQUEST['user_id'];
 
 //check to see if this user has already liked this post
 $query = "SELECT * FROM likes 
-WHERE user_id = $user_id
-AND post_id = $post_id
-LIMIT 1";
+	WHERE user_id = $user_id
+	AND post_id = $post_id
+	LIMIT 1";
 $result = $db->query($query);
 if($result->num_rows != 1){
 	$like = true;
@@ -48,7 +48,7 @@ if($db->affected_rows == 1){
 	
 	 
 	//do count_post_likes($post_id) first, then advanced if desired
-	advanced_count_post_likes($post_id, $user_id) ;
+	likes($post_id, $user_id);
 	
 }else{
 	echo 'Sorry, the rating did not work';
