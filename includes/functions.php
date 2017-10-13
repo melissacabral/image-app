@@ -279,7 +279,7 @@ function basic_likes($post_id){
 	<span class="like-counter">
 		<div>
 			<span class="heart button" data-postid="<?php echo $post_id; ?>">❤</span>
-			<?php echo count_likes($post_id); ?>
+			<?php echo count_likes( $post_id ); ?>
 		</div> 
 	</span>
 	
@@ -288,26 +288,30 @@ function basic_likes($post_id){
 /* this advanced version can tell if a user likes the post, AND tell the total count in one query */
 function likes($post_id, $user_id){	
 	global $db;
+	// global $logged_in_user;
 
 	//did this user like this post?
+	if($user_id){
 	$query = "SELECT COUNT(*) AS you_like
-	FROM   likes 
-	WHERE user_id = $user_id 
-	AND post_id = $post_id
-	";
+			FROM   likes 
+			WHERE user_id = $user_id 
+			AND post_id = $post_id";
 
 	$result = $db->query($query);
 
-	if(!$result) echo $db->error; 
+	if(!$result) echo $db->error;
+
 	$row = $result->fetch_assoc();
-	$class = $row['you_like'] ? 'you_like' : 'not_liked';
-	
+	$class = $row['you_like'] ? 'you_like' : 'not_liked';	
+	}
 
 	//display the interface
 	?>
 	<span class="like-counter">
 		<div class="<?php echo $class; ?>">
-			<span class="heart button" data-postid="<?php echo $post_id; ?>">❤</span>
+				<?php if($user_id){ ?>
+				<span class="heart button" data-postid="<?php echo $post_id; ?>">❤</span>
+				<?php }//logged in ?>
 			<?php echo count_likes($post_id); ?>
 		</div> 
 	</span>

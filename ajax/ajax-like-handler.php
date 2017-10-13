@@ -44,10 +44,8 @@ if($like){
 }
 //check if either query worked
 if($db->affected_rows == 1){
-	//calculate the new  number of likes
-	
-	 
-	//do count_post_likes($post_id) first, then advanced if desired
+
+	//do basic_likes($post_id) first, then advanced likes($post_id, $user_id) if desired
 	likes($post_id, $user_id);
 	
 }else{

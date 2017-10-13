@@ -7,7 +7,7 @@
 * https://github.com/melissacabral/ratings
 * https://github.com/melissacabral/php-ajax
 
-* This example is built as a standalone file for demonstration purposes - in reality, this functionality would be incorporated into every page of the site that shows posts
+* This example is built as a standalone file for demonstration purposes - When you demo this in class, add the Interface and Javascript to the existing index. in reality, this functionality would be incorporated into every page of the site that shows posts
 
 * Add the "likes table" first, put some dummy data in it
 * +----------+---------+---------+
@@ -53,18 +53,15 @@ require('includes/header.php');
 
 				<a href="single.php?post_id=<?php echo $row['post_id']; ?>">
 					<img src="<?php image_url($row['post_id'], 'large'); ?>" class="post-image">
-				</a>
-				
+				</a>				
 			
-					<div class="likes">
-						<?php 
-						//do count_post_likes($post_id) first, then advanced likes() if desired
-						likes($row['post_id'], $logged_in_user['user_id']) ?>
-					
-					</div>
+				<div class="likes">
+					<?php 
+					//do basic_likes($post_id) first, then  likes() if desired
+					likes($row['post_id'], $logged_in_user['user_id']) ?>
+				</div>
+
 				<h3><?php echo $row['title']; ?></h3>
-
-
 
 
 				<?php echo $row['body']; ?>
@@ -91,9 +88,14 @@ require('includes/header.php');
 <?php include('includes/sidebar.php'); ?>
 
 
-
+<?php 
+//only load the JS for LIKES if the user is logged in
+if($logged_in_user){ 
+?>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript">
+	/*====LIKES=====*/
+
 	//bind with "on" because .click won't work since the like button is added to the DOM by the ajax response
 	$(".likes").on( "click", ".button", function() {
 
@@ -104,8 +106,9 @@ require('includes/header.php');
 	console.log(post_id, user_id);
 
 	//get the parent ".likes" container of the button that was pushed
-	var display =  $(this).parents('.likes');     
-	//create an ajax request to display.php
+	var display =  $(this).parents('.likes');  
+
+	//create an ajax request to update the likes count and display the updated count
 	$.ajax({   
 		type: "GET",
 		url: "ajax/ajax-like-handler.php",  
@@ -121,5 +124,6 @@ require('includes/header.php');
 });
 
 </script>
+<?php } //logged in?>
 
-     <?php include('includes/footer.php'); ?>
+<?php include('includes/footer.php'); ?>
