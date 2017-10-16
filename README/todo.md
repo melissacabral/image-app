@@ -3,15 +3,8 @@ TODO
 * Make edit form sticky
 * figure out why white screen of death on uploading a .png (memory limit?)
 * after login: recreate the session if cookie is valid
-* Add DELETE somewhere (delete your own images?)
-* Make sure logged in person is editing their own photo, not just by changing the query string
-
-* SCSS
-
 * better dummy data
-
 * check with notices showing
-* Make wireframes 
 * edit/add hashtags (no.)
 
 DONE
@@ -40,3 +33,7 @@ DONE
 * make sample images in uploads folder for users and posts
 * link to cats
 * link to tags
+* Add DELETE somewhere (delete likes ud un-liking something)
+* Make wireframes 
+* Make sure logged in person is editing their own photo, not just by changing the query string
+* SCSS

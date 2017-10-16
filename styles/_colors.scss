@@ -1,0 +1,12 @@
+//color scheme
+$pop-color:#EE3E67;
+$hover-color:gold;
+
+$page-color:white;
+
+$header-color: #3C454A;
+$subheader-color:rgba($header-color, .5);
+$sidebar-color:rgba($header-color, .1);
+
+$text-color: text-contrast($page-color);
+$link-color: darken(complement($pop-color), 20);

@@ -21,13 +21,13 @@ $post_id = $_GET['post_id'];
 	<?php 
 	//get all the info about THIS post. make sure it is a published post
 	$query = "SELECT posts.*, users.username, users.user_id, users.profile_pic, categories.*
-	FROM posts, categories, users
-	WHERE posts.is_published = 1
-	AND posts.post_id = $post_id
-	AND categories.category_id = posts.category_id
-	AND users.user_id = posts.user_id
-	ORDER BY posts.date DESC
-	LIMIT 10";
+		FROM posts, categories, users
+		WHERE posts.is_published = 1
+		AND posts.post_id = $post_id
+		AND categories.category_id = posts.category_id
+		AND users.user_id = posts.user_id
+		ORDER BY posts.date DESC
+		LIMIT 10";
 	$result = $db->query($query);
 	//check it
 	if( !$result ){
@@ -46,7 +46,7 @@ $post_id = $_GET['post_id'];
 				if( $row['user_id'] == $logged_in_user['user_id'] ){
 					?>
 					<br>
-					<a class="button" href="edit-post.php?post_id=<?php echo $post_id ?>">Edit</a>
+					<a href="edit-post.php?post_id=<?php echo $post_id ?>">Edit</a>
 					<?php } ?>
 
 					<h2 class="user-card">

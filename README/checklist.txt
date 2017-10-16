@@ -20,6 +20,7 @@ Demo 3: (day 7)
 * Open todo.txt and write the objectives of the day
 * JOINS - beef up all existing queries
 * COUNT/Aggregate functions - count posts in tags/category lists. make * helper functions to count comments for any posts
+* Set Up CONSTANTS in db-config for ROOT_URL and ROOT_PATH, use in includes, image display function, etc
 
 Demo 4: (day 8)
 ----
@@ -51,6 +52,7 @@ Demo 8: (day 12)
 ----
 * Open todo.txt and write the objectives of the day
 * Make an RSS feed of the latest published images
+* make sure all URLS use the ROOT_URL constant
 * link to it in the <head>
 
 Demo 9: (day 13)

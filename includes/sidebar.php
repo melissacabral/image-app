@@ -12,7 +12,7 @@
 		<h2>Newest Users</h2>
 		
 		<?php while( $row = $result->fetch_assoc() ){ ?>			
-			<a class="profile-pic" href="profile.php?user_id=<?php echo $row['user_id']; ?>" title="<?php echo $row['username']; ?>'s Profile"><?php show_profile_pic($row['user_id']); ?></a>
+			<a class="" href="profile.php?user_id=<?php echo $row['user_id']; ?>" title="<?php echo $row['username']; ?>'s Profile"><?php show_profile_pic($row['user_id']); ?></a>
 		
 		<?php } //end while 
 		$result->free();

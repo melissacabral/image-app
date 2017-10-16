@@ -174,7 +174,7 @@ function show_profile_pic( $user_id, $size = 'thumb' ){
 		$row = $result->fetch_assoc();
 		
 		//show the image
-		echo '<img src="uploads/' . $row['profile_pic'] . '_' . $size . '.jpg" alt="Profile Picture" class="profile_pic">';
+		echo '<img src="uploads/' . $row['profile_pic'] . '_' . $size . '.jpg" alt="Profile Picture" class="profile-pic">';
 		
 	}
 }
@@ -186,6 +186,12 @@ false if not logged in
 */
 function check_login( $redirect = '' ){
 	global $db;
+	if($_COOKIE['user_id'] && $_COOKIE['secret_key']){
+		$_SESSION['user_id'] = $_COOKIE['user_id'];
+		$_SESSION['secret_key'] = $_COOKIE['secret_key'];
+	}else{
+		return false;
+	}
 	if( isset($_SESSION['user_id']) AND isset($_SESSION['secret_key']) ){
 		//check for a match in the DB
 		$sess_user_id = $_SESSION['user_id'];

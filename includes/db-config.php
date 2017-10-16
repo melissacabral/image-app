@@ -13,7 +13,11 @@ if( $db->connect_errno > 0 ){
 }
 
 //store our security salt in a constant - these are for strengthening out login system. If you change the salt, every password becomes invalid.
+define( 'ROOT_URL', 'http://localhost/melissa/image-app' );
+define( 'ROOT_PATH', 'C:\xampp\htdocs\melissa\image-app' );
+
 define( 'SALT', 'tgbfy786ibnv35t#&)revgnbjk4657#679565bvsfd5rfwhn34e6' );
+
 
 
 

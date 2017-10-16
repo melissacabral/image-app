@@ -1,6 +1,11 @@
 <?php 
-/*
-parses step 1 of "add new post" process and redirects to step 2 on success
+/**
+* processes step 1 of "add new post" and redirects to step 2 on success
+* 
+* Image upload and crop (square, centered)
+* generate multiple image sizes
+* Save the post as a draft with a reference in the DB to the image
+* Redirect to step 2 (edit-post)
 */
 
 if($_POST['did_add_post']){
@@ -16,7 +21,7 @@ if($_POST['did_add_post']){
 		'thumb' => 150,
 		'medium' => 200,
 		'large' => 400
-		);	
+	);	
 
 	// This is the temporary file created by PHP
 	$uploadedfile = $_FILES['uploadedfile']['tmp_name'];
@@ -25,8 +30,7 @@ if($_POST['did_add_post']){
 	
 	//make sure the width and height exist, otherwise, this is not a valid image
 	if($width > 0 AND $height > 0){
-
-	//what kind of image is it
+		//what kind of image is it
 		$filetype = $_FILES['uploadedfile']['type'];
 
 		switch($filetype){
@@ -54,29 +58,34 @@ if($_POST['did_add_post']){
 
 			
 		}
-	//for filename
+		//for filename
 		$randomsha = sha1(microtime());
 
-	//do it!  resize images
-		foreach($sizes as $size_name => $size_width){
-			if($width >=  $size_width){
-				$newwidth = $size_width;
-				$newheight=($height/$width) * $newwidth;
-			}else{
-				$newwidth=$width;
-				$newheight=$height;
+		//do it!  resize images
+		foreach($sizes as $size_name => $size){
+
+			/*SQUARE CROP CALCULATIONS*/
+			if ($width > $height) {
+				$crop_y = 0;
+				$crop_x = ($width - $height) / 2;
+				$smallestSide = $height;
+			} else {
+				$crop_x = 0;
+				$crop_y = ($height - $width) / 2;
+				$smallestSide = $width;
 			}
-			$tmp = imagecreatetruecolor($newwidth,$newheight);
-			imagecopyresampled($tmp,$src,0,0,0,0,$newwidth,$newheight,$width,$height);
+		//resize the image - make a new blank canvas of the desired size
+			$tmp_canvas = imagecreatetruecolor($size, $size);
+		//copy the original image onto this canvas and resize
+			imagecopyresampled($tmp_canvas, $src, 0, 0, $crop_x, $crop_y, $size, $size, $smallestSide, $smallestSide);
 
 			$filename = $target_path.$randomsha.'_'.$size_name.'.jpg';
-			//variable to track if it worked or not  - imagejpg() returns true or false upon completion of saving the jpg into our uploads folder. 
-			$didcreate = imagejpeg($tmp,$filename,70);
-			
-			//cleanup temp canvas
-			imagedestroy($tmp);
 
-		}
+			$didcreate = imagejpeg($tmp_canvas,$filename,70);
+			imagedestroy($tmp_canvas);
+
+		}	
+		
 		//cleanup original full sized file
 		imagedestroy($src);
 
@@ -84,9 +93,9 @@ if($_POST['did_add_post']){
 		if($didcreate){
 			$user_id = $logged_in_user['user_id'];			
 			$query = "INSERT INTO posts
-				(image, date, user_id)
-				VALUES 
-				('$randomsha', now(), $user_id )";
+			(image, date, user_id)
+			VALUES 
+			('$randomsha', now(), $user_id )";
 
 			$result = $db->query($query);
 			//check to see if there was a problem

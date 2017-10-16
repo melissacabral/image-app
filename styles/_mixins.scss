@@ -1,0 +1,28 @@
+@mixin action(){
+	color: text-contrast($pop-color);
+	background: $pop-color;  
+	border:none;
+	width:auto;
+	display:block;
+	margin:1em 0;
+	padding:.25em 1em;
+	font-family: inherit;
+	cursor: pointer;
+	transition: background .3s ease-out;
+}
+
+
+@mixin shadow(){
+	-webkit-box-shadow: 2px 2px 5px 0px rgba(black,.3);
+	-moz-box-shadow: 2px 2px 5px 0px rgba(black,.3);
+	box-shadow: 2px 2px 5px 0px rgba(black,.3);
+}
+@mixin userpic-circle($size:80px){
+	border-radius: 500px;
+	vertical-align: middle;
+	margin-right: $gutter/2;
+	@include shadow;
+	width:$size;
+	height:$size;
+}
+
